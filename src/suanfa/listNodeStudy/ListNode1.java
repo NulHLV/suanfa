@@ -8,6 +8,13 @@ package suanfa.listNodeStudy;
  */
 
 public class ListNode1 {
+    // 给定一个单链表的头节点 head，请反转链表，并返回反转后的链表头节点。
+    // 逐步将当前节点的 next 指针指向前一个节点，从而完成链表的反转操作
+
+    // head = [1, 2, 3, 4, 5]
+
+    // [5, 4, 3, 2, 1]
+
     public static ListNode reverseList(ListNode head) {
         ListNode prev = null;  // 前一个节点
         ListNode current = head;  // 当前节点
@@ -32,5 +39,17 @@ public class ListNode1 {
         // 反转后
         ListNode reversedHead = reverseList(node1);
         ListNode.printNodeList(reversedHead);
+    }
+
+    public static ListNode reverseList_test(ListNode head) {
+        ListNode current = head;
+        ListNode pre = null;
+        while (current != null) {
+            ListNode tmp = current.next;
+            current.next = pre;
+            current = tmp;
+        }
+
+        return pre;
     }
 }

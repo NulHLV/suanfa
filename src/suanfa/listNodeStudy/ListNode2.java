@@ -42,4 +42,20 @@ public class ListNode2 {
         ListNode current = node1;
         System.out.println(hasCycle(current));
     }
+
+    public static boolean test(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+
+        ListNode fast = head.next;
+        ListNode slow = head;
+
+        while (fast != slow) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        return true;
+    }
 }

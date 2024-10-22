@@ -60,4 +60,30 @@ public class ListNode5 {
 
         ListNode.printNodeList(mergeTwoLists(node1, node5));
     }
+
+    public static ListNode merge_test(ListNode head1, ListNode head2) {
+        // 合并两个有序链表
+        // 1) 从头遍历  2) 遍历完拼接不为空的其中一个链表
+        ListNode a = head1;
+        ListNode b = head2;
+        ListNode result = new ListNode(0);
+        ListNode current = result;
+
+
+        while (a != null && b != null) {
+            if (a.val < b.val) {
+                current.next = a;
+                a = a.next;
+            } else {
+                current.next = b;
+                b = b.next;
+            }
+
+            current = current.next;
+        }
+
+        current.next = a != null ? a : b;
+
+        return result.next;
+    }
 }

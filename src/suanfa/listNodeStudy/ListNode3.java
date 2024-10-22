@@ -32,7 +32,16 @@ public class ListNode3 {
         node3.next = node4;
 
         ListNode.printNodeList(node1);
-        deleteNode(node3);
+        deleteNode(node4);
         ListNode.printNodeList(node1);
+    }
+
+    public static void test(ListNode node) {
+        if (node == null || node.next == null) {
+            return;
+        }
+
+        node.val = node.next.val;
+        node.next = node.next.next;
     }
 }
