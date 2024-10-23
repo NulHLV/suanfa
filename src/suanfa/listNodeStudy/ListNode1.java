@@ -37,7 +37,7 @@ public class ListNode1 {
         // 反转前
         ListNode.printNodeList(node1);
         // 反转后
-        ListNode reversedHead = reverseList(node1);
+        ListNode reversedHead = reverseList_test(node1);
         ListNode.printNodeList(reversedHead);
     }
 
@@ -47,9 +47,25 @@ public class ListNode1 {
         while (current != null) {
             ListNode tmp = current.next;
             current.next = pre;
+            pre = current;
             current = tmp;
         }
 
         return pre;
     }
+
+    public static ListNode reverseList_test2(ListNode head) {
+        ListNode current = head;
+        ListNode pre = null;
+
+        while (current != null) {
+            ListNode tmp = current.next;
+            current.next = pre;
+            pre = current;
+            current = tmp;
+        }
+
+        return pre;
+    }
+
 }

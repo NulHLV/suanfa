@@ -1,7 +1,5 @@
 package suanfa.listNodeStudy;
 
-import org.w3c.dom.NodeList;
-
 /**
  * 删除节点
  *
@@ -32,11 +30,21 @@ public class ListNode3 {
         node3.next = node4;
 
         ListNode.printNodeList(node1);
-        deleteNode(node4);
+        deleteNode_test1(node3);
         ListNode.printNodeList(node1);
     }
 
     public static void test(ListNode node) {
+        if (node == null || node.next == null) {
+            return;
+        }
+
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+
+    public static void deleteNode_test1(ListNode node) {
+        // 用下个节点覆盖掉要删除节点，并把next指向next next
         if (node == null || node.next == null) {
             return;
         }

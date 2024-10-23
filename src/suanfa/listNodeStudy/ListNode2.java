@@ -40,7 +40,7 @@ public class ListNode2 {
         node3.next = node1;
 
         ListNode current = node1;
-        System.out.println(hasCycle(current));
+        System.out.println(hasCycle_test2(current));
     }
 
     public static boolean test(ListNode head) {
@@ -52,8 +52,32 @@ public class ListNode2 {
         ListNode slow = head;
 
         while (fast != slow) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+
             fast = fast.next.next;
             slow = slow.next;
+        }
+
+        return true;
+    }
+
+    public static boolean hasCycle_test2(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        // 快慢指针
+        ListNode slow = head;
+        ListNode fast = head.next;
+
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
         return true;

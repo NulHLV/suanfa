@@ -45,22 +45,21 @@ public class ListNode4 {
 
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(1);
-        ListNode node3 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(5);
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
 
         ListNode node5 = new ListNode(1);
-        ListNode node6 = new ListNode(1);
-        ListNode node7 = new ListNode(1);
+        ListNode node6 = new ListNode(2);
+        ListNode node7 = new ListNode(3);
         ListNode node8 = new ListNode(5);
         node5.next = node6;
         node6.next = node7;
         node7.next = node8;
-
-        ListNode.printNodeList(add_test2(node1, node5));
+        ListNode.printNodeList(add_test3(node1, node5));
     }
 
     public static ListNode add_test(ListNode head1, ListNode head2) {
@@ -118,6 +117,41 @@ public class ListNode4 {
             }
 
             if (b != null) {
+                b = b.next;
+            }
+        }
+
+        if (carry > 0) {
+            current.next = new ListNode(carry);
+        }
+
+        return result.next;
+    }
+
+    public static ListNode add_test3(ListNode head1, ListNode head2) {
+        ListNode a = head1;
+        ListNode b = head2;
+        ListNode result = new ListNode(0);
+        ListNode current = result;
+        int carry = 0;
+
+        while (a != null || b != null) {
+            int x = a == null ? 0 : a.val;
+            int y = b == null ? 0 : b.val;
+
+            int sum = x + y + carry;
+
+            carry = sum / 10;
+
+            current.next = new ListNode(sum % 10);
+
+            current = current.next;
+
+            if (a != null){
+                a = a.next;
+            }
+
+            if (b != null){
                 b = b.next;
             }
         }

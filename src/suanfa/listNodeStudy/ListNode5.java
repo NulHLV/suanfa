@@ -52,13 +52,11 @@ public class ListNode5 {
 
         ListNode node5 = new ListNode(1);
         ListNode node6 = new ListNode(2);
-        ListNode node7 = new ListNode(4);
-        ListNode node8 = new ListNode(5);
+        ListNode node7 = new ListNode(2);
         node5.next = node6;
         node6.next = node7;
-        node7.next = node8;
 
-        ListNode.printNodeList(mergeTwoLists(node1, node5));
+        ListNode.printNodeList(mergeTwoLists_test1(node1, node5));
     }
 
     public static ListNode merge_test(ListNode head1, ListNode head2) {
@@ -83,6 +81,33 @@ public class ListNode5 {
         }
 
         current.next = a != null ? a : b;
+
+        return result.next;
+    }
+
+    public static ListNode mergeTwoLists_test1(ListNode l1, ListNode l2) {
+        ListNode left = l1;
+        ListNode right = l2;
+        ListNode result = new ListNode(0);
+        ListNode current = result;
+
+        while (left != null && right != null) {
+            if (left.val < right.val) {
+                current.next = left;
+                left = left.next;
+            } else {
+                current.next = right;
+                right = right.next;
+            }
+
+            current = current.next;
+        }
+
+        if (left == null) {
+            current.next = right;
+        } else {
+            current.next = left;
+        }
 
         return result.next;
     }
